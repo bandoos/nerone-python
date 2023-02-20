@@ -1,0 +1,36 @@
+#+title: Notes
+
+* NEROne current evaluation scheme
+
+Data model of the input data:
+
+An RSS-channel-item sequence (or "united" unique item)
+
+Containing the <emm:text> and then a sequence of sibling <> items
+- ORGANIZATION
+- PERSON
+- LOCATION
+- ??
+
+  The value inside of this tag is "[<index-start>] <text> [<index-end>]"
+  where the indices are the (monotonically increasing?) overall char positions
+  of the entity in the text.
+
+  :NOTE:
+    TODO: how are ideograms managed in charsets?
+  :END:
+
+
+Then intrisic model is
+
+(Text),
+[(categ, start, end, text)]
+
+To be more clean I'd prefer to keep track of the corpus id too
+in a cross-dataset context
+
+So this would mean
+
+corpus_id -> Text
+
+and [(corpus_id, start, end, text)]
